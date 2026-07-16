@@ -35,11 +35,16 @@ public class Student extends Person{
     public void setDiem(double diem) {
         this.diem = diem;
     }
-    
+
     //ghi de phuong thuc
     @Override
     public void display() {
-        System.out.printf("%-10s %-20s %-10s %-15s %-5.2f\n", getId(), getName(), lop, monHoc, diem);
+        System.out.println("Mã sinh viên : " + getId());
+        System.out.println("Họ tên       : " + getName());
+        System.out.println("Lớp          : " + lop);
+        System.out.println("Môn học      : " + monHoc);
+        System.out.println("Điểm         : " + diem);
+        System.out.println("------------------------------------");
     }
 
     //chuyen doi tuong thanh chuoi de luu file
