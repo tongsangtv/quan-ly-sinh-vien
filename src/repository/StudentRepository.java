@@ -7,7 +7,7 @@ import java.util.List;
 
 public class StudentRepository implements IStudentRepository {
     private List<Student> danhSachSinhVien;
-    private final String DUONG_DAN_FILE = "students.txt";
+    private final String DUONG_DAN_FILE = "src/data/students.txt";
 
     public StudentRepository() {
         danhSachSinhVien = new ArrayList<>();
