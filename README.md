@@ -12,9 +12,11 @@ QuanLySinhVien/
 │   │
 │   ├── repository/
 │   │      StudentRepository.java
+│   │      IStudentRepository.java
 │   │
 │   ├── service/
 │   │      StudentService.java
+│   │      IStudentService.java
 │   │
 │   ├── ui/
 │   │      StudentUI.java
