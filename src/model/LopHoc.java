@@ -24,9 +24,4 @@ public class LopHoc {
     public void setTenLop(String tenLop) {
         this.tenLop = tenLop;
     }
-
-    @Override
-    public String toString() {
-        return maLop + " - " + tenLop;
-    }
 }
