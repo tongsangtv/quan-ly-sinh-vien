@@ -55,6 +55,17 @@ public class StudentRepository implements IStudentRepository {
     }
 
     @Override
+    public void capNhatSinhVien(Student sinhVien) {
+        for (int i = 0; i < danhSachSinhVien.size(); i++) {
+            if (danhSachSinhVien.get(i).getId().equalsIgnoreCase(sinhVien.getId())) {
+                danhSachSinhVien.set(i, sinhVien);
+                break;
+            }
+        }
+        ghiFile();
+    }
+
+    @Override
     public void docFile() {
         File file = new File(DUONG_DAN_FILE);
         if (!file.exists()) {

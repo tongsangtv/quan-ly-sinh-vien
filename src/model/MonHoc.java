@@ -24,9 +24,4 @@ public class MonHoc {
     public void setTenMon(String tenMon) {
         this.tenMon = tenMon;
     }
-
-    @Override
-    public String toString() {
-        return maMon + " - " + tenMon;
-    }
 }
