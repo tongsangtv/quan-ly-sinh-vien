@@ -31,7 +31,6 @@ public class StudentUI {
             System.out.println("4. Cập nhật sinh viên");
             System.out.println("5. Xóa sinh viên");
             System.out.println("0. Thoát");
-            System.out.print("Chọn: ");
 
             while (true) {
                 try {
