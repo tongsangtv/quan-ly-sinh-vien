@@ -26,9 +26,9 @@ public class StudentService implements IStudentService {
                 return false; // Trùng mã thì dừng và báo không thêm được
             }
         }
-        
+
         studentRepository.themSinhVien(sinhVien);
-        return true; 
+        return true;
     }
 
     @Override
@@ -39,6 +39,18 @@ public class StudentService implements IStudentService {
             return true; // Xóa thành công
         }
         return false; // Không tìm thấy để xóa
+    }
+
+    @Override
+    public boolean capNhatSinhVien(Student sinhVien) {
+        Student s = timSinhVienTheoId(sinhVien.getId());
+
+        if (s == null) {
+            return false;
+        }
+
+        studentRepository.capNhatSinhVien(sinhVien);
+        return true;
     }
 
     @Override
@@ -53,4 +65,3 @@ public class StudentService implements IStudentService {
         return null; // Không thấy thì trả về null
     }
 }
-
