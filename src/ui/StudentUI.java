@@ -28,11 +28,26 @@ public class StudentUI {
             System.out.println("1. Thêm sinh viên");
             System.out.println("2. Hiển thị danh sách");
             System.out.println("3. Tìm sinh viên");
-            System.out.println("4. Xóa sinh viên");
+            System.out.println("4. Cập nhật sinh viên");
+            System.out.println("5. Xóa sinh viên");
             System.out.println("0. Thoát");
             System.out.print("Chọn: ");
 
-            choice = Integer.parseInt(sc.nextLine());
+            while (true) {
+                try {
+                    System.out.print("Chọn: ");
+                    choice = Integer.parseInt(sc.nextLine());
+
+                    if (choice >= 0 && choice <= 5) {
+                        break;
+                    } else {
+                        System.out.println("Chỉ được nhập từ 0 đến 5!");
+                    }
+
+                } catch (Exception e) {
+                    System.out.println("Vui lòng nhập số!");
+                }
+            }
 
             switch (choice) {
                 case 1:
@@ -46,8 +61,11 @@ public class StudentUI {
                 case 3:
                     findStudent();
                     break;
-
                 case 4:
+                    updateStudent();
+                    break;
+
+                case 5:
                     deleteStudent();
                     break;
 
@@ -67,8 +85,7 @@ public class StudentUI {
 
         System.out.println("\n------ THÊM SINH VIÊN ------");
 
-        System.out.print("Mã sinh viên: ");
-        String id = sc.nextLine();
+        String id = nhapId();
 
         if (service.timSinhVienTheoId(id) != null) {
             System.out.println("Mã sinh viên đã tồn tại!");
@@ -84,8 +101,7 @@ public class StudentUI {
         System.out.print("Môn học: ");
         String monHoc = sc.nextLine();
 
-        System.out.print("Điểm: ");
-        double diem = Double.parseDouble(sc.nextLine());
+        double diem = nhapDiem();
 
         Student student = new Student(id, name, lop, monHoc, diem);
 
@@ -129,6 +145,55 @@ public class StudentUI {
         }
     }
 
+    //Cap nhat sinh vien
+    private void updateStudent() {
+
+        System.out.print("Nhập mã sinh viên cần cập nhật: ");
+        String id = sc.nextLine();
+
+        Student student = service.timSinhVienTheoId(id);
+
+        if (student == null) {
+            System.out.println("Không tìm thấy sinh viên!");
+            return;
+        }
+
+        System.out.print("Họ tên mới: ");
+        String name = sc.nextLine();
+
+        System.out.print("Lớp mới: ");
+        String lop = sc.nextLine();
+
+        System.out.print("Môn học mới: ");
+        String monHoc = sc.nextLine();
+
+        double diem;
+
+        while (true) {
+            try {
+                System.out.print("Điểm mới: ");
+                diem = Double.parseDouble(sc.nextLine());
+
+                if (diem >= 0 && diem <= 10) {
+                    break;
+                } else {
+                    System.out.println("Điểm phải từ 0 đến 10!");
+                }
+
+            } catch (Exception e) {
+                System.out.println("Điểm không hợp lệ!");
+            }
+        }
+
+        Student newStudent = new Student(id, name, lop, monHoc, diem);
+
+        if (service.capNhatSinhVien(newStudent)) {
+            System.out.println("Cập nhật thành công!");
+        } else {
+            System.out.println("Cập nhật thất bại!");
+        }
+    }
+
     // Xoa sinh vien
     private void deleteStudent() {
 
@@ -139,6 +204,42 @@ public class StudentUI {
             System.out.println("Xóa thành công!");
         } else {
             System.out.println("Không tìm thấy sinh viên!");
+        }
+    }
+
+    private String nhapId() {
+        while (true) {
+            try {
+                System.out.print("Mã sinh viên: ");
+                int id = Integer.parseInt(sc.nextLine());
+
+                if (id > 0) {
+                    return String.valueOf(id);
+                } else {
+                    System.out.println("ID phải lớn hơn 0!");
+                }
+
+            } catch (Exception e) {
+                System.out.println("ID chỉ được nhập số!");
+            }
+        }
+    }
+
+    private double nhapDiem() {
+        while (true) {
+            try {
+                System.out.print("Điểm: ");
+                double diem = Double.parseDouble(sc.nextLine());
+
+                if (diem >= 0 && diem <= 10) {
+                    return diem;
+                } else {
+                    System.out.println("Điểm phải từ 0 đến 10!");
+                }
+
+            } catch (Exception e) {
+                System.out.println("Điểm không hợp lệ!");
+            }
         }
     }
 }
