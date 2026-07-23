@@ -38,13 +38,12 @@ public class Student extends Person{
 
     //ghi de phuong thuc
     @Override
-    public void display() {
-        System.out.println("Mã sinh viên : " + getId());
-        System.out.println("Họ tên       : " + getName());
-        System.out.println("Lớp          : " + lop);
-        System.out.println("Môn học      : " + monHoc);
-        System.out.println("Điểm         : " + diem);
-        System.out.println("------------------------------------");
+    public String hienThiThongTin() {
+        return "Mã sinh viên : " + getId()
+                + "\nHọ tên       : " + getName()
+                + "\nLớp          : " + lop
+                + "\nMôn học      : " + monHoc
+                + "\nĐiểm         : " + diem;
     }
 
     //chuyen doi tuong thanh chuoi de luu file
