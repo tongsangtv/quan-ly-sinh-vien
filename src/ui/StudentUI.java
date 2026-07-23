@@ -3,6 +3,7 @@ package ui;
 import java.util.List;
 import java.util.Scanner;
 
+import model.Person;
 import model.Student;
 import service.IStudentService;
 import service.StudentService;
@@ -124,7 +125,9 @@ public class StudentUI {
         System.out.println("\n===== DANH SÁCH SINH VIÊN =====");
 
         for (Student student : list) {
-            student.display();
+            Person person = student;
+            System.out.println(person.hienThiThongTin());
+            System.out.println("------------------------------------");
         }
     }
 
@@ -140,7 +143,9 @@ public class StudentUI {
             System.out.println("Không tìm thấy sinh viên!");
         } else {
             System.out.println("\nThông tin sinh viên:");
-            student.display();
+            Person person = student;
+            System.out.println(person.hienThiThongTin());
+            System.out.println("------------------------------------");
         }
     }
 
@@ -166,23 +171,7 @@ public class StudentUI {
         System.out.print("Môn học mới: ");
         String monHoc = sc.nextLine();
 
-        double diem;
-
-        while (true) {
-            try {
-                System.out.print("Điểm mới: ");
-                diem = Double.parseDouble(sc.nextLine());
-
-                if (diem >= 0 && diem <= 10) {
-                    break;
-                } else {
-                    System.out.println("Điểm phải từ 0 đến 10!");
-                }
-
-            } catch (Exception e) {
-                System.out.println("Điểm không hợp lệ!");
-            }
-        }
+        double diem = nhapDiem();
 
         Student newStudent = new Student(id, name, lop, monHoc, diem);
 
