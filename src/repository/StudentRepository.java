@@ -37,6 +37,17 @@ public class StudentRepository implements IStudentRepository {
     }
 
     @Override
+    public void capNhatSinhVien(Student sinhVien) {
+        for (int i = 0; i < danhSachSinhVien.size(); i++) {
+            if (danhSachSinhVien.get(i).getId().equalsIgnoreCase(sinhVien.getId())) {
+                danhSachSinhVien.set(i, sinhVien);
+                break;
+            }
+        }
+        ghiFile();
+    }
+
+    @Override
     public void ghiFile() {
         try {
             BufferedWriter bw = new BufferedWriter(new FileWriter(DUONG_DAN_FILE));
@@ -52,17 +63,6 @@ public class StudentRepository implements IStudentRepository {
         } catch (Exception e) {
             System.err.println("Lỗi ghi file rồi!");
         }
-    }
-
-    @Override
-    public void capNhatSinhVien(Student sinhVien) {
-        for (int i = 0; i < danhSachSinhVien.size(); i++) {
-            if (danhSachSinhVien.get(i).getId().equalsIgnoreCase(sinhVien.getId())) {
-                danhSachSinhVien.set(i, sinhVien);
-                break;
-            }
-        }
-        ghiFile();
     }
 
     @Override

@@ -149,6 +149,19 @@ public class StudentUI {
         }
     }
 
+    // Xoa sinh vien
+    private void deleteStudent() {
+
+        System.out.print("Nhập mã sinh viên cần xóa: ");
+        String id = sc.nextLine();
+
+        if (service.xoaSinhVien(id)) {
+            System.out.println("Xóa thành công!");
+        } else {
+            System.out.println("Không tìm thấy sinh viên!");
+        }
+    }
+
     //Cap nhat sinh vien
     private void updateStudent() {
 
@@ -179,19 +192,6 @@ public class StudentUI {
             System.out.println("Cập nhật thành công!");
         } else {
             System.out.println("Cập nhật thất bại!");
-        }
-    }
-
-    // Xoa sinh vien
-    private void deleteStudent() {
-
-        System.out.print("Nhập mã sinh viên cần xóa: ");
-        String id = sc.nextLine();
-
-        if (service.xoaSinhVien(id)) {
-            System.out.println("Xóa thành công!");
-        } else {
-            System.out.println("Không tìm thấy sinh viên!");
         }
     }
 

@@ -1,0 +1,2 @@
+12345678;sang;httt;java;10.0
+98765;tu;dhth;js;8.0
